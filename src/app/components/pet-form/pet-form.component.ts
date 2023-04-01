@@ -64,8 +64,8 @@ export class PetFormComponent implements OnInit, AfterViewInit {
     
     body.birthday = body.birthday.split('T')[0]
 
-    observable = this.pet?._id
-      ? this.http.post(`pets/${this.pet._id}`, body)
+    observable = this.pet?.id
+      ? this.http.patch(`pets/${this.pet.id}`, body)
       : this.http.put('pets', body);
 
     observable.subscribe(
