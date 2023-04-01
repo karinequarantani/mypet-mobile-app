@@ -26,7 +26,6 @@ export class PetFormComponent implements OnInit, AfterViewInit {
 
   private currentTypeAnimal;
   private currentTypeSex;
-  private currentTypeCastrado;
 
 
   constructor(private http: HttpClient,
@@ -35,11 +34,10 @@ export class PetFormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.form = new FormGroup({
-      type: new FormControl(this.pet?.type || 'dog'),
-      sex: new FormControl(this.pet?.sex || 'male'),
-      castrated: new FormControl(this.pet?.castrated === false ? 'false' : 'true'),
+      breed: new FormControl(this.pet?.breed || 'canina'),
+      gender: new FormControl(this.pet?.gender || 'masculino'),
       name: new FormControl(this.pet?.name || ''),
-      breed: new FormControl(this.pet?.breed || ''),
+      specie: new FormControl(this.pet?.specie || ''),
       vaccines: new FormControl(this.pet?.vaccinas || []),
       medicaments: new FormControl(this.pet?.medicaments || [])
     });
@@ -47,20 +45,18 @@ export class PetFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.currentTypeCastrado = this.pet?.castrated === false ? 'false' : 'true';
-    this.currentTypeAnimal = this.pet?.type || 'dog';
-    this.currentTypeSex = this.pet?.sex || 'male';
+    this.currentTypeAnimal = this.pet?.breed || 'canina';
+    this.currentTypeSex = this.pet?.gender || 'masculino';
 
     this.addClassSelected(`#radio-${this.currentTypeAnimal}`);
     this.addClassSelected(`#radio-sex-${this.currentTypeSex}`);
-    this.addClassSelected(`#radio-castrado-${this.currentTypeCastrado}`);
   }
 
   public save() {
     this.loadingTracker = true;
     let observable: Observable<any>;
 
-    const body = { ...this.form.value, castrated: this.form.value?.castrated === 'true' };
+    const body = { ...this.form.value };
 
     observable = this.pet?._id
       ? this.http.put(`edit/${this.pet._id}`, body)
@@ -107,12 +103,6 @@ export class PetFormComponent implements OnInit, AfterViewInit {
     event.currentTarget.querySelector(`#radio-sex-${this.currentTypeSex}`).classList.remove('selected');
     event.currentTarget.querySelector(`#radio-sex-${event.detail?.value}`).classList.add('selected');
     this.currentTypeSex = event.detail?.value;
-  }
-
-  public changeTypeCastrado(event) {
-    event.currentTarget.querySelector(`#radio-castrado-${this.currentTypeCastrado}`).classList.remove('selected');
-    event.currentTarget.querySelector(`#radio-castrado-${event.detail?.value}`).classList.add('selected');
-    this.currentTypeCastrado = event.detail?.value;
   }
 
 }

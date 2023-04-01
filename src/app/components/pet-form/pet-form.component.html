@@ -7,15 +7,15 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-radio-group #radioTypeAnimal formControlName="type" (ionChange)="changeTypeAnimal($event)">
+        <ion-radio-group #radioTypeAnimal formControlName="breed" (ionChange)="changeTypeAnimal($event)">
           <div class="radio-container">
-            <ion-item id="radio-dog">
+            <ion-item id="radio-canina">
               <ion-label color="light">Cachorro</ion-label>
-              <ion-radio name="radio-dog" slot="start" value="dog" checked></ion-radio>
+              <ion-radio name="radio-dog" slot="start" value="canina" checked></ion-radio>
             </ion-item>
-            <ion-item id="radio-cat">
+            <ion-item id="radio-felina">
               <ion-label color="light">Gato</ion-label>
-              <ion-radio name="radio-cat" id="radio-cat" slot="start" value="cat"></ion-radio>
+              <ion-radio name="radio-cat" id="radio-cat" slot="start" value="felina"></ion-radio>
             </ion-item>
           </div>
         </ion-radio-group>
@@ -26,35 +26,15 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-radio-group formControlName="sex" (ionChange)="changeTypeSex($event)">
+        <ion-radio-group formControlName="gender" (ionChange)="changeTypeSex($event)">
           <div class="radio-container">
-            <ion-item id="radio-sex-male">
+            <ion-item id="radio-sex-masculino">
               <ion-label color="light">Macho</ion-label>
-              <ion-radio name="radio-sex-male" slot="start" value="male"></ion-radio>
+              <ion-radio name="radio-sex-male" slot="start" value="masculino"></ion-radio>
             </ion-item>
-            <ion-item id="radio-sex-female">
+            <ion-item id="radio-sex-feminina">
               <ion-label color="light">Fêmea</ion-label>
-              <ion-radio name="radio-sex-female" id="radio-cat" slot="start" value="female">
-              </ion-radio>
-            </ion-item>
-          </div>
-        </ion-radio-group>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>É castrado? </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-radio-group formControlName="castrated"  (ionChange)="changeTypeCastrado($event)">
-          <div class="radio-container">
-            <ion-item id="radio-castrado-true">
-              <ion-label color="light">Sim</ion-label>
-              <ion-radio name="radio-castrado-true" slot="start" value="true"></ion-radio>
-            </ion-item>
-            <ion-item id="radio-castrado-false">
-              <ion-label color="light">Não</ion-label>
-              <ion-radio name="radio-castrado-false" id="radio-cat" slot="start" value="false">
+              <ion-radio name="radio-sex-female" id="radio-cat" slot="start" value="feminina">
               </ion-radio>
             </ion-item>
           </div>
