@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { ModalController } from '@ionic/angular';
 import { ModalPetComponent } from './modal-pet/modal-pet.component';
 
@@ -32,8 +32,9 @@ export class MyPets implements OnInit {
 
 
   private findAllPets = () => {
-    this.loadingTracker = true;
-    return this.http.get<Pageable>('page').subscribe(
+    this.loadingTracker = false;
+    //this.pets = [{name: "Hugo", breed: "Lulu", sex: "male", type: "dog"}]
+    return this.http.get<Pageable>(`pets/${environment.TUTOR_ID}`).subscribe(
       (resp) => this.pets = resp.content,
       (error) => console.log(error),
       () => this.loadingTracker = false

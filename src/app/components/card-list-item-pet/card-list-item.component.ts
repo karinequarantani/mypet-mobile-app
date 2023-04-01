@@ -19,7 +19,7 @@ export class CardListItemComponent implements OnInit {
 
 
   ngOnInit() {
-    this.urlSex = `../../../assets/icon/${this.pet.sex}.png`;
-    this.urlType = `../../../assets/icon/${this.pet.type}.png`;
+    this.urlSex = `../../../assets/icon/${this.pet.gender}.png`;
+    this.urlType = `../../../assets/icon/${this.pet.breed}.png`;
   }
 }

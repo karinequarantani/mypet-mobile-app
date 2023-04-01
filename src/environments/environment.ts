@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'https://fake-end.herokuapp.com/fake-api/pets/',
-  // BASE_URL: 'http://localhost:3000/fake-api/pets/',
-  PROJECT_TOKEN: 'ccad73b8-b1aa-4bcd-a271-7c09304860d8'
+  // BASE_URL: 'https://fake-end.herokuapp.com/fake-api/pets/',
+  BASE_URL: 'http://localhost:8080/',
+  PROJECT_TOKEN: 'ccad73b8-b1aa-4bcd-a271-7c09304860d8',
+  TUTOR_ID: '98e5b4d8-e9b9-4fa3-9c6e-e4699ed85046'
 };
 
 /*
