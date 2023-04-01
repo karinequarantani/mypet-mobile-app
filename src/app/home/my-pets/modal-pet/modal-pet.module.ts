@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalPetComponent } from './modal-pet.component';
 import { PetFormComponent } from 'src/app/components/pet-form/pet-form.component';
 import { SpinnerComponentModule } from 'src/app/components/spinner/spinner.module';
-
+import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 
 @NgModule({
@@ -15,6 +15,9 @@ import { SpinnerComponentModule } from 'src/app/components/spinner/spinner.modul
     IonicModule,
     ReactiveFormsModule,
     SpinnerComponentModule
+  ],
+  providers:[
+    DatePicker
   ],
   declarations: [ModalPetComponent, PetFormComponent]
 })

@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pet-form',
@@ -20,6 +21,7 @@ export class PetFormComponent implements OnInit, AfterViewInit {
   @Input()
   public closeModal: () => void;
 
+  public currentDate = new Date().toISOString()
   public loadingTracker = false;
 
   public form = new FormGroup({});
@@ -39,7 +41,8 @@ export class PetFormComponent implements OnInit, AfterViewInit {
       name: new FormControl(this.pet?.name || ''),
       specie: new FormControl(this.pet?.specie || ''),
       vaccines: new FormControl(this.pet?.vaccinas || []),
-      medicaments: new FormControl(this.pet?.medicaments || [])
+      medicaments: new FormControl(this.pet?.medicaments || []),
+      birthday: new FormControl(this.pet?.birthday || this.currentDate)
     });
 
   }
@@ -56,11 +59,14 @@ export class PetFormComponent implements OnInit, AfterViewInit {
     this.loadingTracker = true;
     let observable: Observable<any>;
 
-    const body = { ...this.form.value };
+    let body = { ...this.form.value,
+                    tutorId: environment.TUTOR_ID };
+    
+    body.birthday = body.birthday.split('T')[0]
 
     observable = this.pet?._id
-      ? this.http.put(`edit/${this.pet._id}`, body)
-      : this.http.post('create', body);
+      ? this.http.post(`pets/${this.pet._id}`, body)
+      : this.http.put('pets', body);
 
     observable.subscribe(
       (res) => {

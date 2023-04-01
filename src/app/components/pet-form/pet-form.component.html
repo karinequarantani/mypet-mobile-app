@@ -54,7 +54,20 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input class="input-blank" formControlName="breed" placeholder="Desconhecida" required></ion-input>
+        <ion-input class="input-blank" formControlName="specie" placeholder="Desconhecida" required></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Qual é a data de nascimento/adoção?</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-datetime formControlName="birthday" required
+          dayShortNames="domingo,segunda-feira,terça-feira,quarta-feira,quinta-feira,sexta-feira,sábado"
+          displayFormat="DD/MM/YYYY"
+          pickerFormat="DD MMM YYYY"
+          monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez"
+          [max]="currentDate"></ion-datetime>
       </ion-col>
     </ion-row>
     <ion-row>
