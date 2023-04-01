@@ -85,7 +85,7 @@ export class PetFormComponent implements OnInit, AfterViewInit {
   public remove() {
     this.loadingTracker = true;
 
-    this.http.delete(`delete-by-id/${this.pet._id}`).subscribe(
+    this.http.delete(`pets/${this.pet.id}`).subscribe(
       (res) => {
         if (!!this.closeModal) this.closeModal();
       },
