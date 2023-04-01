@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
+  "engines": {
+    "node": "16.15.1"
+  },
   "scripts": {
     "ng": "ng",
     "android:external": "sudo ionic cordova run android --external",
